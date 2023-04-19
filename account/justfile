@@ -1,0 +1,10 @@
+set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+
+compile:
+    npm run compile
+
+synth: compile
+    npm run synth
+
+apply: synth
+    kubectl apply -f ./dist/account.k8s.yaml
