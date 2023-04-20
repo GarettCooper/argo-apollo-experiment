@@ -29,3 +29,25 @@ spec:
           name: hello-kubernetes
           ports:
             - containerPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shell-demo
+  namespace: argocd
+spec:
+  containers:
+    - name: git
+      command: ["sh"]
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 3000; rm -f /tmp/healthy; sleep 600
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      image: alpine/git
