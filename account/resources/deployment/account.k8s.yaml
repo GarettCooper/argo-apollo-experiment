@@ -27,5 +27,6 @@ spec:
       containers:
         - image: account:0.0.1
           name: account
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
