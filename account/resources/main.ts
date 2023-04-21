@@ -13,7 +13,7 @@ export class MyChart extends Chart {
     new KubeService(this, 'service', {
       spec: {
         type: 'LoadBalancer',
-        ports: [{ port: 80, targetPort: IntOrString.fromNumber(8080) }],
+        ports: [{ port: 80, targetPort: IntOrString.fromNumber(8000) }],
         selector: label
       }
     });
@@ -29,9 +29,9 @@ export class MyChart extends Chart {
           spec: {
             containers: [
               {
-                name: 'hello-kubernetes',
-                image: 'paulbouwer/hello-kubernetes:1.7',
-                ports: [{ containerPort: 8080 }]
+                name: 'account',
+                image: 'account:0.0.1',
+                ports: [{ containerPort: 8000 }]
               }
             ]
           }
